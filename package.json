@@ -1,0 +1,22 @@
+{
+  "name": "coffeemachine",
+  "version": "1.0.0",
+  "description": "Base project for practice fundamental of JavaScript By Dicoding INdonesia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryo-kurniawan/coffeemachine.git"
+  },
+  "keywords": [
+    "coffemachine"
+  ],
+  "author": "ryo-kurniawan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryo-kurniawan/coffeemachine/issues"
+  },
+  "homepage": "https://github.com/ryo-kurniawan/coffeemachine#readme"
+}
