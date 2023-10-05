@@ -1,21 +1,73 @@
-function getUser(id, callback) {
+// function getUser(id, callback) {
+//     setTimeout(() => {
+//       if (!id) {
+//         callback(new Error("User ID is required"), null);
+//       }
+  
+//       callback(null, { id, name: 'John Doe', location: "Jakarta" });
+//     }, 1000);
+//   }
+  
+//   function getWeather(location, callback) {
+//     setTimeout(() => {
+//       if (!location) {
+//         callback(new Error("Location is required"), null);
+//       }
+  
+//       callback(null, { weather: "Sunny", temperature: 30 });
+//     }, 1000);
+//   }
+  
+//   module.exports = { getUser, getWeather };
+
+function buyTollRoadCard(money) {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (!id) {
-        callback(new Error("User ID is required"), null);
+      if (money >= 25) {
+        console.log('buying card');
+        resolve({ tollRoadCard: true, balance: 0 });
+        return;
       }
-  
-      callback(null, { id, name: 'John Doe', location: "Jakarta" });
+
+      reject(new Error('not enough money to buy card'));
     }, 1000);
-  }
-  
-  function getWeather(location, callback) {
+  });
+}
+function topUpBalance(card, amount) {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (!location) {
-        callback(new Error("Location is required"), null);
+      if (card) {
+        console.log('topping up balance');
+        resolve({ ...card, balance: card.balance + amount });
+        return;
       }
-  
-      callback(null, { weather: "Sunny", temperature: 30 });
+
+      reject(new Error('no card'));
     }, 1000);
-  }
-  
-  module.exports = { getUser, getWeather };
+  });
+}
+
+
+function useTollRoad(card) {
+  const TOLL_PRICE = 10;
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (card.balance < TOLL_PRICE) {
+        reject(new Error('not enough balance'));
+        return;
+      }
+
+      card.balance -= TOLL_PRICE;
+
+      console.log('using toll road');
+      resolve();
+    }, 1000);
+  });
+}
+
+module.exports = {
+  buyTollRoadCard,
+  topUpBalance,
+  useTollRoad,
+}

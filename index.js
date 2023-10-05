@@ -204,41 +204,41 @@
 //   .catch(err => console.log(err.message));
 
 // Promise Berantai
-function withDrawMoney(amount) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (amount > 100) {
-          reject(new Error('Not enough money to withdraw'));
-        }
+// function withDrawMoney(amount) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         if (amount > 100) {
+//           reject(new Error('Not enough money to withdraw'));
+//         }
   
-        resolve(amount);
-      }, 1000);
-    });
-  }
+//         resolve(amount);
+//       }, 1000);
+//     });
+//   }
 
-  function buyCinemaTicket(money) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (money < 10) {
-          reject(new Error('not enough money to buy ticket'));
-        }
+//   function buyCinemaTicket(money) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         if (money < 10) {
+//           reject(new Error('not enough money to buy ticket'));
+//         }
   
-        resolve('ticket-1');
-      }, 1000);
-    });
-  }
+//         resolve('ticket-1');
+//       }, 1000);
+//     });
+//   }
 
-  function goInsideCinema(ticket) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (!ticket) {
-          reject(new Error('no ticket'));
-        }
+//   function goInsideCinema(ticket) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         if (!ticket) {
+//           reject(new Error('no ticket'));
+//         }
   
-        resolve('enjoy the movie');
-      }, 1000);
-    });
-  }
+//         resolve('enjoy the movie');
+//       }, 1000);
+//     });
+//   }
 // Without Arrow Function
 //   function watchMovie() {
 //     withDrawMoney(10)
@@ -257,12 +257,87 @@ function withDrawMoney(amount) {
 //   }
 
 //   With Arrow Function
-function watchMovie() {
-    withDrawMoney(10)
-      .then((money) => buyCinemaTicket(money))
-      .then((ticket) => goInsideCinema(ticket))
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error.message));
-  }
+// function watchMovie() {
+//     withDrawMoney(10)
+//       .then((money) => buyCinemaTicket(money))
+//       .then((ticket) => goInsideCinema(ticket))
+//       .then((result) => console.log(result))
+//       .catch((error) => console.log(error.message));
+//   }
   
-  watchMovie();
+//   watchMovie();
+
+// Asynchronous Handling dengan Sintaks Async dan Await
+// async function watchMovie() {
+//   try {
+//     const money = await withDrawMoney(10);
+//     const ticket = await buyCinemaTicket(money);
+//     const result = await goInsideCinema(ticket);
+ 
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
+ 
+// watchMovie().then(() => console.log('done'));
+
+// function buyTollRoadCard(money) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (money >= 25) {
+//         console.log('buying card');
+//         resolve({ tollRoadCard: true, balance: 0 });
+//       } else {
+//         reject(new Error('not enough money to buy card'));
+//       }
+//     }, 1000);
+//   });
+// }
+
+// function topUpBalance(card, amount) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (card) {
+//         console.log('topping up balance');
+//         resolve({ ...card, balance: card.balance + amount });
+//       } else {
+//         reject(new Error('no card'));
+//       }
+//     }, 1000);
+//   });
+// }
+
+// async function useTollRoad(card) {
+//   const TOLL_PRICE = 10;
+
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (card.balance < TOLL_PRICE) {
+//         reject(new Error('not enough balance'));
+//       } else {
+//         card.balance -= TOLL_PRICE;
+//         console.log('using toll road');
+//         resolve('enjoy your trip');
+//       }
+//     }, 1000);
+//   });
+// }
+
+// async function getTollAccess() {
+//   try {
+    
+//     const buyCard = await buyTollRoadCard(25);
+//     const card = await topUpBalance(buyCard, 10);   
+//     const useToll = await useTollRoad(card);
+    
+
+//     // Jika semua langkah berhasil
+//     console.log(useToll);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
+
+// // Jangan hapus kode di bawah ini
+// getTollAccess();
